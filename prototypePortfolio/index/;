@@ -1,0 +1,42 @@
+
+var images = {
+	"Ceramics":"mona.jpg",
+	"Sketching":"wave.jpg",
+	"3D Modeling":"stars.jpg",
+	"Unity":"placeholder.png",
+	"Processing":"placeholder.png",
+	"HTML CSS":"placeholder.png"
+};
+$(".menuButton").mouseenter(function() {
+	var dataText = $(this).attr("data-id");
+	if ($(this).parents(".container").find(".displayText").text() != dataText) {
+		$(this).parents(".container").find(".displayText").fadeTo(500, 0, function () {
+			$(this).text(dataText);
+		}).fadeTo(700, 1).delay(500).fadeTo(700, 0);
+		$(this).parents(".container").find(".gridImage").fadeTo(500, 0, function () {
+			$(this).attr("src", images[dataText]);
+			$(this).removeClass("gallery");
+			$(this).addClass("display");
+		}).fadeTo(700, 1, function () {
+			var cur = $(this);
+			setTimeout(function() {
+				$(cur).removeClass("display");
+				$(cur).addClass("gallery");
+			}, 500);	
+		});
+		$(this).parents(".container").find("#activeButton").removeAttr("id");
+		$(this).parent().attr("id", "activeButton");
+	}
+});
+
+$(".gallery").click(function() {
+	alert("clicked");
+});
+
+$("#hs0L").click(function(){ $.fn.fullpage.moveSlideLeft(); });
+$("#hs1L").click(function(){ $.fn.fullpage.moveSlideLeft(); });
+$("#hs0R").click(function(){ $.fn.fullpage.moveSlideRight(); });
+$("#hs-1R").click(function(){ $.fn.fullpage.moveSlideRight(); });
+$("#hs0B").click(function(){ $.fn.fullpage.moveSectionDown(); });
+$("#aT").click(function(){ $.fn.fullpage.moveSectionUp(); });
+

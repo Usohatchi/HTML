@@ -1,0 +1,226 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>Portfolio</title>
+		<style></style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="jquery.fullPage.css" />
+		<link rel="stylesheet" href="index.css">
+		<script type="text/javascript" src="jquery.fullPage.js"></script>
+		<script type="text/javascript" src="processing.min.js"></script> 
+		<script>
+			$(document).ready(function() {
+				$('#fullpage').fullpage({
+					anchors: ['home', 'aboutMe'],
+					controlArrows: false,
+					verticalCentered: true,
+					scrollingSpeed: 700,
+					lockAnchors: false,
+					loopTop: false,
+					loopBottom: false,
+					loopHorizontal: false,
+					keyboardScrolling: true,
+					onSlideLeave: function( anchorLink, index, slideIndex, direction, nextSlideIndex){
+						var leavingSlide = $(this);
+						if (slideIndex == 1) {
+							if(direction == "right")
+								$("#slide1C").hide().fadeIn(1000);
+							if(slideIndex == 1 && direction == "left")
+								$("#slide-1C").hide().fadeIn(1000);
+							$("#slide0C").hide(800);
+						}
+						else if (slideIndex == 0 && direction == "right") {
+							$("#slide-1C").hide(400);
+							$("#slide0C").hide().fadeIn(800);
+						}
+						else if (slideIndex == 2 && direction == "left") {
+							$("#slide1C").hide(400);
+							$("#slide0C").hide().fadeIn(800);
+						}
+					},
+					onLeave: function(index, nextIndex, direction){
+						var leavingSection = $(this);
+						if(index == 1 && direction == "down"){
+							$("#slide-1C").hide(800);
+							$("#slide0C").hide(800);
+							$("#slide1C").hide(800);
+							$("#amC").hide().fadeIn(800);
+						}
+						else if(index == 2 && direction == 'up'){
+							$("#amC").hide(800);
+							$("#slide-1C").hide().fadeIn(800);
+							$("#slide0C").hide().fadeIn(800);
+							$("#slide1C").hide().fadeIn(800);
+						}
+					}
+				});
+				$("#slide-1C .gridImage").each(function() {
+					$(this).data("X", $(this).offset().left + $(window).width());
+					$(this).data("Y", $(this).offset().top);
+				});
+				$("#slide1C .gridImage").each(function() {
+					$(this).data("X", $(this).offset().left - $(window).width());
+					$(this).data("Y", $(this).offset().top);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="fullpage">
+			<div class="section">
+				<div class="slide" data-anchor="slide-1">
+					<div class="container" id="slide-1C">
+						<div class="menuHolder">
+							<div class="menuBorder"><div class="menuBorder2"></div></div>
+							<ul class="menuList">
+								<li id="activeButton">
+									<div class="menuText">Ceramics</div>
+									<div class="menuButton" data-id="Ceramics"></div>
+								</li>
+								<li>
+									<div class="menuText">Sketching</div>
+									<div class="menuButton" data-id="Sketching"></div>
+								</li>
+								<li>
+									<div class="menuText">3D Modeling</div>
+									<div class="menuButton" data-id="3D Modeling"></div>
+								</li>
+							</ul>
+						</div>
+						<div class="displayImageHolder">
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="display gridImage saver placed" style="background: transparent url(Images/mona.jpg) no-repeat center"></div>
+							<div class="displayText">
+								<div class="displayHead">Ceramics</div>
+								<div class="displayPara"></div>
+							</div>
+						</div>
+						<div id="hs-1R" class="buttonHolder">
+							<img src="arrow.png" class="arrow">
+							<div class="buttonText">Back</div>
+						</div>
+					</div>
+				</div>
+				<div class="slide active" data-anchor="slide0">
+					<div class="container" id="slide0C">
+						<div id="hs0L" class="buttonHolder">
+							<img src="arrow.png" class="arrow">
+							<div class="buttonText">Art</div>
+						</div>
+						<div id="hs0R" class="buttonHolder">
+							<img src="arrow.png" class="arrow">
+							<div class="buttonText">Programming</div>
+						</div>
+						<h2 class="homeTitle">Eamon Ito-Fisher</h2>
+						<!--
+						<div id="hs0B" class="buttonHolder">
+							<div class="buttonText">About Me</div>
+							<img src="arrowDown.png" class="arrow">
+						</div>
+						-->
+					</div>
+				</div>
+				<div class="slide" data-anchor="slide1">
+					<div class="container" id="slide1C">
+						<div class="menuHolder">
+							<div class="menuBorder"><div class="menuBorder2"></div></div>
+							<ul class="menuList">
+								<li id="activeButton">
+									<div class="menuText">Unity</div>
+									<div class="menuButton" data-id="Unity"></div>
+								</li>
+								<li>
+									<div class="menuText">HTML / CSS</div>
+									<div class="menuButton" data-id="HTML/CSS"></div>
+								</li>
+								<li>
+									<div class="menuText">Processing</div>
+									<div class="menuButton" data-id="Processing"></div>
+								</li>
+							</ul>
+						</div>
+						<div class="displayImageHolder">
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="gallery gridImage" style="opacity: 0"></div>
+							<div class="display gridImage saver placed" style="background: transparent url(Images/materials.png) no-repeat center">
+								<canvas id="canvas1"></canvas>
+							</div>
+							<div class="displayText">
+								<div class="displayHead">Unity</div>
+								<div class="displayPara"></div>
+							</div>
+						</div>
+						<div id="hs1L" class="buttonHolder">
+							<img src="arrow.png" class="arrow" id="testA">
+							<div class="buttonText">Back</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--
+			<div class="section">
+				<div class="container" id="amC">
+					<h2 class="aboutMeTitle">About Me</h2>
+					<div class="textHolder">
+						<p> 
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel luctus leo, nec tristique magna. Morbi pharetra orci non mi auctor, in auctor mi dapibus. Nam quis lacus ac sem viverra auctor eu non ex. Curabitur ante magna, varius non rutrum a, pellentesque non turpis. Sed quis ligula vitae ex viverra imperdiet eget sed augue. Sed nisl ex, fermentum ac scelerisque at, ornare sed nisl. Aliquam luctus enim sapien, eu imperdiet dui vehicula eget. Vestibulum in nibh gravida, fringilla mauris sit amet, mattis velit. Proin rutrum nulla eget massa malesuada bibendum. Nunc in urna et risus commodo porttitor vitae finibus ipsum.
+
+						Sed finibus blandit libero, nec sagittis sem ultrices non. Praesent vehicula massa in iaculis euismod. Integer ullamcorper quam in venenatis sodales. Suspendisse dignissim ante non quam dignissim maximus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur ut tortor ac augue elementum molestie. Nullam cursus vitae felis non tempor. Integer accumsan interdum bibendum. Proin placerat diam quam, sed convallis turpis vehicula quis.
+
+						Praesent quam quam, tempus vel elit hendrerit, sagittis pretium tellus. Nunc vitae iaculis purus. Phasellus semper nunc quam, sit amet maximus metus bibendum a. Nunc imperdiet, nibh ut auctor malesuada, lectus metus viverra libero, eu volutpat felis massa eget lectus. Integer imperdiet tristique quam a eleifend. Mauris sit amet consectetur lacus, at lacinia ex. Duis ornare justo sed maximus aliquam. Fusce sit amet dignissim nisi. Donec at viverra ex. Suspendisse non interdum nisi.
+
+						Cras maximus, magna id vulputate pretium, tellus lectus malesuada arcu, et lacinia elit felis nec eros. Morbi lobortis aliquam blandit. Pellentesque eget ipsum vel nulla elementum porttitor. Praesent bibendum vestibulum nisi quis convallis. Fusce fermentum quis nunc interdum gravida. In eget velit sit amet libero fringilla elementum in rutrum nibh. Maecenas vel lectus at erat aliquam ultricies eget et sem. Nullam faucibus quam elit, cursus sodales odio ultrices nec. Integer euismod diam non felis porta dignissim. Nulla sit amet felis nec odio pellentesque fringilla in finibus lacus.
+
+						Etiam vel risus vel justo dignissim mattis eget a magna. Duis nisi odio, euismod ac vestibulum eleifend, dapibus sed ligula. Donec tortor tortor, blandit dapibus mi ac, faucibus pulvinar libero. Aliquam semper nulla eu dui mattis eleifend sed nec felis. Nunc dictum rutrum lectus, id commodo lacus convallis sed. Etiam quis lorem sed elit varius cursus. In placerat sollicitudin velit eu aliquam. Quisque et mattis quam. Pellentesque ut accumsan nunc, eu tristique ex. Aenean ornare ornare nibh non efficitur.
+						</p>
+					</div>
+					<img src="placeholder.png" class="aboutMeImage">
+					<div id="aT" class="buttonHolder">
+						<img src="arrow.png" class="arrow">
+						<div class="buttonText">Back</div>
+					</div>
+				</div>
+			</div>
+			-->
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
+
